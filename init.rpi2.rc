@@ -23,10 +23,6 @@ on post-fs-data
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
 
-on early-boot
-
-    setprop sys.fb.bits 16
-
 on boot
     setprop net.dns1 8.8.8.8
     setprop net.dns2 8.8.4.4
