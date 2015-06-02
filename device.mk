@@ -1,5 +1,5 @@
 #
-# Copyright 2014 The Android Open Source Project
+# Copyright 2014 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,4 +14,22 @@
 # limitations under the License.
 #
 
-add_lunch_combo full_rpi2-userdebug
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := device/raspberrypi/rpi2-kernel/kernel
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES := \
+	$(LOCAL_KERNEL):kernel
+
+PRODUCT_PACKAGES := \
+	libwpa_client \
+	dhcpcd.conf \
+	wpa_supplicant \
+	wpa_supplicant.conf \
+	libGLES_mesa \
+	libgralloc_drm \
+	$()
+
+$(call inherit-product-if-exists, vendor/raspberrypi/rpi2/device-vendor.mk)

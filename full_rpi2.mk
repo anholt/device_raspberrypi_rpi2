@@ -1,5 +1,5 @@
 #
-# Copyright 2014 The Android Open Source Project
+# Copyright 2014 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,5 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, device/raspberrypi/rpi2/device.mk)
 
-add_lunch_combo full_rpi2-userdebug
+PRODUCT_NAME := full_rpi2
+PRODUCT_DEVICE := rpi2
+PRODUCT_BRAND := Android
+PRODUCT_MODEL := rpi2
+PRODUCT_MANUFACTURER := raspberrypi
